@@ -23,5 +23,5 @@ exports.logoutUser = (token, exp) => {
     const expire = new Date(exp *1000);
     const milliseconds = expire.getTime() - now.getTime();
     // ..........blacklist token.........
-    return cacheUtil.set(token, token, milliseconds);
+    return null;
 }

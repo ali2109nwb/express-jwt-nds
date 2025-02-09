@@ -5,6 +5,7 @@ const jwtUtil = require('../utils/jwt.util');
 const { password } = require('../config/database.config');
 
 exports.register = async (req, res) => {
+    console.log(req.body);
     const isExist = await AuthService.findUserByEmail(req.body.email);
     if(isExist) {
         return res.status(400).json({
@@ -29,7 +30,7 @@ exports.login = async (req, res) => {
     if(user) {
         const isMatched = await bcryptUtil.compareHash(req.body.password, user.password);
         if(isMatched) {
-            const token = await jwtUtil.createToken({ id: user.id});
+            const token = await jwtUtil.createToken({ id: user.id , name:user.name});
             return res.json({
                 access_token: token,
                 token_type: 'Bearer',

@@ -13,7 +13,7 @@ const User = sequelize.define('User', {
     }
 }, {
     createdAt: 'created_at',
-    createdAt: 'updated_at'
+    updatedAt: 'updated_at'
 });
 
 module.exports = User;
